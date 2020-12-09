@@ -1,0 +1,93 @@
+const path = require("path");
+const TerserPlugin = require("terser-webpack-plugin");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+// const CopyWebpackPlugin = require("copy-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+
+const isDev = process.env.NODE_ENV === "development";
+const isProd = !isDev;
+
+const optimization = () => {
+  const config = {
+    splitChunks: {
+      chunks: "all"
+    }
+  };
+
+  if (isProd) {
+    config.minimizer = [new OptimizeCssAssetsPlugin(), new TerserPlugin()];
+  }
+
+  return config;
+};
+
+const jsLoaders = () => {
+  const loaders = [
+    {
+      loader: "babel-loader",
+      options: {
+        presets: ["@babel/preset-env"],
+        plugins: ["@babel/plugin-proposal-class-properties"]
+      }
+    }
+  ];
+
+  if (isDev) {
+    loaders.push("eslint-loader");
+  }
+
+  return loaders;
+};
+
+module.exports = {
+  context: path.resolve(__dirname, "src"),
+  mode: "development",
+  entry: {
+    app: ["@babel/polyfill", "./app.js"]
+  },
+  output: {
+    filename: "[name].[contenthash].js",
+    path: path.resolve(__dirname, "dist")
+  },
+  optimization: optimization(),
+  devtool: isDev ? "source-map" : false,
+  plugins: [
+    new HTMLWebpackPlugin({
+      template: "./index.html",
+      minify: {
+        collapseWhitespace: isProd
+      }
+    }),
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css"
+    }) /* ,
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "src/something.png"),
+          to: path.resolve(__dirname, "dist")
+        }
+      ]
+    }) */
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"]
+      },
+      {
+        test: /\.less$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader"]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: jsLoaders()
+      }
+    ]
+  }
+};

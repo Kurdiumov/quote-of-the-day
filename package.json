@@ -2,15 +2,39 @@
   "name": "quote-of-the-day",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app.js",
-  "scripts": {},
-  "author": "Rostyslav Kurdiumov",
+  "private": true,
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "dev": "cross-env NODE_ENV=development webpack --mode development"
+  },
+  "browserslist": "> 0.25%, not dead",
+  "author": "Rostyslav Kurdiumov <rostyslav.kurdiumov@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/Kurdiumov/quote-of-the-day.git"
   },
   "devDependencies": {
-    "eslint": "^7.15.0"
+    "@babel/core": "^7.12.9",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.7",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.4.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^5.0.1",
+    "eslint": "^7.15.0",
+    "eslint-loader": "^4.0.2",
+    "html-webpack-plugin": "^4.5.0",
+    "less": "^3.12.2",
+    "less-loader": "^7.1.0",
+    "mini-css-extract-plugin": "^1.3.2",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.0.3",
+    "webpack": "^5.10.0",
+    "webpack-cli": "^4.2.0"
   }
 }
