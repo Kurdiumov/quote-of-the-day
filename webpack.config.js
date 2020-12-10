@@ -1,6 +1,7 @@
 const path = require("path");
+const webpack = require("webpack");
 const TerserPlugin = require("terser-webpack-plugin");
-const HTMLWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -41,6 +42,13 @@ const jsLoaders = () => {
   return loaders;
 };
 
+const styleLoader = () => {
+  if (isProd) {
+    return MiniCssExtractPlugin.loader;
+  }
+  return "style-loader";
+};
+
 module.exports = {
   context: path.resolve(__dirname, "src"),
   mode: "development",
@@ -53,14 +61,22 @@ module.exports = {
   },
   optimization: optimization(),
   devtool: isDev ? "source-map" : false,
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+    compress: true,
+    disableHostCheck: true
+  },
   plugins: [
-    new HTMLWebpackPlugin({
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
       template: "./index.html",
       minify: {
         collapseWhitespace: isProd
       }
     }),
-    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css"
     }) /* ,
@@ -77,11 +93,11 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"]
+        use: [styleLoader(), "css-loader"]
       },
       {
         test: /\.less$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader"]
+        use: [styleLoader(), "css-loader", "less-loader"]
       },
       {
         test: /\.js$/,

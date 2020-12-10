@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --mode production",
-    "dev": "cross-env NODE_ENV=development webpack --mode development"
+    "dev": "cross-env NODE_ENV=development webpack --mode development",
+    "start": "cross-env NODE_ENV=development webpack serve --mode development --progress --watch"
   },
   "browserslist": "> 0.25%, not dead",
   "author": "Rostyslav Kurdiumov <rostyslav.kurdiumov@gmail.com>",
@@ -35,6 +36,7 @@
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.0.3",
     "webpack": "^5.10.0",
-    "webpack-cli": "^4.2.0"
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
   }
 }
