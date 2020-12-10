@@ -1,5 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
 const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -50,6 +49,7 @@ const styleLoader = () => {
 };
 
 module.exports = {
+  target: isDev ? "web" : "browserslist",
   context: path.resolve(__dirname, "src"),
   mode: "development",
   entry: {
