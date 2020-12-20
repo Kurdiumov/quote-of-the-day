@@ -1,1 +1,131 @@
 @import "reset-css";
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,400&display=swap");
+
+@quote-container-color: rgba(255, 255, 255, 60%);
+@quote-border-color: #fff;
+@quote-text-size: 2rem;
+@footer-text-color: #fff;
+
+body {
+  height: 100vh;
+  background-image: url("../images/mountains.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-family: "Raleway", sans-serif;
+
+  #quote-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 40%;
+    min-height: 20%;
+    max-height: 90%;
+    background-color: @quote-container-color;
+    border: 2px solid @quote-border-color;
+    border-radius: 45px;
+    overflow-y: scroll;
+
+    #quote-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 45px;
+      font-size: @quote-text-size;
+      font-style: italic;
+      opacity: 1;
+      animation: fadein 3s;
+
+      #quote {
+        min-height: 70px;
+        text-align: center;
+
+        &:before {
+          content: "\201C";
+        }
+
+        &:after {
+          content: "\201D";
+        }
+      }
+
+      #author {
+        padding-top: @quote-text-size;
+        font-style: normal;
+        text-align: right;
+
+        &:before {
+          content: "—";
+        }
+      }
+    }
+  }
+
+  footer {
+    span {
+      color: @footer-text-color;
+      position: fixed;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.2rem;
+      text-align: center;
+      width: 100%;
+
+      a {
+        font-weight: bolder;
+        text-decoration: none;
+
+        &:visited {
+          color: @footer-text-color;
+        }
+
+        &:hover {
+          color: darken(@footer-text-color, 5%);
+        }
+
+        &:active {
+          color: darken(@footer-text-color, 10%);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  body {
+    #quote-container {
+      min-width: 70%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    #quote-container {
+      min-width: 90%;
+      top: 20%;
+      transform: translate(-50%, -20%);
+
+      #quote-content {
+        padding: 20px;
+      }
+    }
+
+    footer {
+      span {
+        bottom: 0.2rem;
+      }
+    }
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
