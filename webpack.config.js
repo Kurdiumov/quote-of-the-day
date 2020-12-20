@@ -67,7 +67,8 @@ module.exports = {
     hot: true,
     inline: true,
     compress: true,
-    disableHostCheck: true
+    disableHostCheck: true,
+    port: 3000
   },
   plugins: [
     new CleanWebpackPlugin(),
