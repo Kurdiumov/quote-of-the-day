@@ -6,7 +6,8 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "dev": "cross-env NODE_ENV=development webpack --mode development",
-    "start": "cross-env NODE_ENV=development webpack serve --mode development --progress --watch"
+    "start": "cross-env NODE_ENV=development webpack serve --mode development --progress --watch",
+    "deploy": "cross-env NODE_ENV=development webpack --mode=production && gh-pages -d dist"
   },
   "browserslist": "> 0.25%, not dead",
   "author": "Rostyslav Kurdiumov <rostyslav.kurdiumov@gmail.com>",
@@ -15,6 +16,7 @@
     "type": "git",
     "url": "https://github.com/Kurdiumov/quote-of-the-day.git"
   },
+  "homepage": "https://github.com/Kurdiumov/quote-of-the-day",
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
@@ -28,6 +30,7 @@
     "css-loader": "^5.0.1",
     "eslint": "^7.15.0",
     "eslint-loader": "^4.0.2",
+    "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^4.5.0",
     "less": "^3.12.2",
     "less-loader": "^7.1.0",

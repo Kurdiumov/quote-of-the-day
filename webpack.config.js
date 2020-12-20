@@ -57,11 +57,13 @@ module.exports = {
   },
   output: {
     filename: "[name].[contenthash].js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "dist"),
+    publicPath: isDev ? "./" : "/quote-of-the-day/"
   },
   optimization: optimization(),
   devtool: isDev ? "source-map" : false,
   devServer: {
+    publicPath: "/",
     contentBase: path.join(__dirname, "dist"),
     historyApiFallback: true,
     hot: true,
