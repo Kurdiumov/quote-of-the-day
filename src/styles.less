@@ -56,26 +56,30 @@ body {
         text-align: right;
 
         &:before {
-          content: "—";
+          content: "— ";
         }
       }
     }
   }
 
   footer {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+
     span {
       color: @footer-text-color;
-      position: fixed;
-      bottom: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
       font-size: 1.2rem;
-      text-align: center;
-      width: 100%;
 
       a {
         font-weight: bolder;
         text-decoration: none;
+        color: @footer-text-color;
 
         &:visited {
           color: @footer-text-color;
@@ -89,6 +93,11 @@ body {
           color: darken(@footer-text-color, 10%);
         }
       }
+    }
+
+    .powered-by {
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
     }
   }
 }
