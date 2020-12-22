@@ -4,6 +4,7 @@
 @quote-container-color: rgba(255, 255, 255, 60%);
 @quote-border-color: #fff;
 @quote-text-size: 2rem;
+@quote-smaller-text-size: 1.5rem;
 @footer-text-color: #fff;
 
 body {
@@ -116,11 +117,19 @@ body {
   body {
     #quote-container {
       min-width: 70%;
+
+      #quote-content {
+        #quote, #author {
+          font-size: @quote-smaller-text-size;
+        }
+      }
     }
   }
 }
 
 @media (max-width: 768px) {
+  @quote-text-size: 5rem;
+
   body {
     #quote-container {
       min-width: 90%;
@@ -128,7 +137,9 @@ body {
       transform: translate(-50%, -20%);
 
       #quote-content {
-        padding: 20px;
+        #quote, #author {
+          font-size: @quote-smaller-text-size;
+        }
       }
     }
 
@@ -150,5 +161,5 @@ body {
 }
 
 #loadOverlay {
-  display: none
+  display: none;
 }
