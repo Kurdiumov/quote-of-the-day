@@ -3,13 +3,19 @@ import mountains from "../images/mountains.jpg";
 import PhotosApi from "./PhotosApi";
 import QuotesApi from "./QuotesApi";
 
+const showQuote = (quote, author) => {
+  document.getElementById("quote").innerText = quote;
+  document.getElementById("author").innerText = author;
+  document.getElementById("quote-container").style.display = "block";
+};
+
 new QuotesApi().getQuoteOfTheDay().then(
   ({ quote, author }) => {
-    document.getElementById("quote").innerText = quote;
-    document.getElementById("author").innerText = author ?? "Unknown author";
+    showQuote(quote, author ?? "Unknown author");
   },
   (err) => {
     console.error("Unable to fetch data from external quotes API:", err);
+    showQuote("Love the life you live. Live the life you love.", "Bob Marley");
   }
 );
 
