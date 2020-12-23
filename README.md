@@ -36,7 +36,7 @@ Background images provided by [Unsplash.com API](https://unsplash.com/developers
 Quotes powered by [Paper Quotes API](http://paperquotes.com/).
 
 ## Built with
-<img src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/> <img src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/> <img src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/> <img src="https://img.shields.io/badge/%7BLESS%7D-%231d365d?&style=for-the-badge&logoColor=white"/> <img src="https://img.shields.io/badge/webpack%20-%238DD6F9.svg?&style=for-the-badge&logo=webpack&logoColor=black" />
+<img src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/> <img src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/> <img src="https://img.shields.io/badge/%7BLESS%7D-%231d365d?&style=for-the-badge&logoColor=white"/> <img src="https://img.shields.io/badge/webpack%20-%238DD6F9.svg?&style=for-the-badge&logo=webpack&logoColor=black" />
 
 ## License
 This project is licensed under the terms of the [MIT license](https://github.com/Kurdiumov/quote-of-the-day/blob/main/LICENSE).
