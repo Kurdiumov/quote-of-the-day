@@ -88,6 +88,10 @@ module.exports = {
         {
           from: path.resolve(__dirname, ".nojekyll"),
           to: path.resolve(__dirname, "dist")
+        },
+        {
+          from: path.resolve(__dirname, "images/favicon.ico"),
+          to: path.resolve(__dirname, "dist")
         }
       ]
     })
