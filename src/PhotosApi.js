@@ -1,18 +1,17 @@
 module.exports = class PhotosApi {
-  constructor() {
-    this.token = "VrmgRB9hqEOS7JDFp8egcMmwwHyFNDoJbUSVGDh17r0";
-    this.collections = "804449,1242150,9545968";
+  constructor(backendUrl) {
+    this.backendUrl = backendUrl;
   }
 
   async getPhotoUrl(width = 1024, height = 768) {
     const response = await fetch(
-      `https://api.unsplash.com/photos/random/?collections=${this.collections}&client_id=${this.token}&w=${width}&h=${height}`
+      `${this.backendUrl}/imageUrl?width=${width}&height=${height}`
     );
 
     if (response.ok) {
       const json = await response.json();
       console.log(json.urls);
-      return json.urls.custom;
+      return json.imageUrl;
     }
 
     throw new Error(

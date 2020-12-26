@@ -9,7 +9,9 @@ const showQuote = (quote, author) => {
   document.getElementById("quote-container").style.display = "block";
 };
 
-new QuotesApi().getQuoteOfTheDay().then(
+const backendUrl = "https://quote-of-the-day-backend.herokuapp.com";
+
+new QuotesApi(backendUrl).getQuoteOfTheDay().then(
   ({ quote, author }) => {
     showQuote(quote, author ?? "Unknown author");
   },
@@ -19,9 +21,9 @@ new QuotesApi().getQuoteOfTheDay().then(
   }
 );
 
-const getRandomOrDefaultPhotoUrl = async () => {
+const getRandomOrDefaultPhotoUrl = async (backendUrl) => {
   try {
-    return await new PhotosApi().getPhotoUrl(
+    return await new PhotosApi(backendUrl).getPhotoUrl(
       window.innerWidth,
       window.innerHeight
     );
@@ -30,7 +32,7 @@ const getRandomOrDefaultPhotoUrl = async () => {
   }
 };
 
-getRandomOrDefaultPhotoUrl().then((url) => {
+getRandomOrDefaultPhotoUrl(backendUrl).then((url) => {
   const img = new Image();
   img.src = url;
 

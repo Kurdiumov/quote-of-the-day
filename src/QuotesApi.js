@@ -1,21 +1,14 @@
 module.exports = class QuotesApi {
-  constructor() {
-    this.token = "84c7c5e25e9d0587424610e1745dea3321ffdcde";
+  constructor(backendUrl) {
+    this.backendUrl = backendUrl;
   }
 
   async getQuoteOfTheDay() {
-    const response = await fetch(
-      "https://api.paperquotes.com/apiv1/qod/?lang=en",
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Token ${this.token}`
-        }
-      }
-    );
+    const response = await fetch(`${this.backendUrl}/quote`);
 
     if (response.ok) {
-      return await response.json();
+      const json = await response.json();
+      return json.result;
     }
 
     throw new Error(

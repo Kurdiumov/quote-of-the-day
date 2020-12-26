@@ -27,8 +27,7 @@ You can start a live server which will watch for changes and rebuild the applica
 npm run start
 ```
 
-To simplify development process and avoid backend creation access keys for both PaperQuote and Unsplash APIs are hardcoded in source codes.
-
+Application uses [backend](https://github.com/Kurdiumov/quote-of-the-day-backend) as a proxy for fetching data from PaperQuote and Unsplash APIs.
 
 Third-party APIs
 ---
